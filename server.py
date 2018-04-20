@@ -45,7 +45,7 @@ def find_afterparties():
 
         payload = {'token': token,
                    'location.address': location,
-                   'location.distance': distance
+                   'location.within': distance
                   }
 
         r = requests.get('https://www.eventbriteapi.com/v3/events/search',
