@@ -46,12 +46,20 @@ def find_afterparties():
         payload = {'token': token,
                    'location.address': location,
                    'location.within': distance
-                  }
+                   }
 
         r = requests.get('https://www.eventbriteapi.com/v3/events/search',
                          params=payload)
-        print payload
-        print r.json()
+
+        after_parties = r.json()
+
+        num_parties = after_parties['pagination']['object_count']
+        events = after_parties['events']
+        print events
+
+        # for i in range(num_parties-1):
+        #     print 
+
         # TODO: Look for afterparties!
 
         # - Make a request to the Eventbrite API to search for events that match
